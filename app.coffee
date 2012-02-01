@@ -4,6 +4,7 @@ assets = require 'connect-assets'
 
 app = express.createServer()
 app.use assets()
+app.use express.static(__dirname + '/public')
 app.set 'view engine', 'jade'
 
 app.get '/', (req, resp) -> resp.render 'index'
@@ -17,7 +18,7 @@ app.get '/:filename', (req, resp) ->
 
 app.post '/:filename', saveit
 
-saveit = (req, resp) -> 
+saveit = (req, resp) ->
   content = req.query["content"]
   unless (content)
     resp.json({error: 'File content is missing'}, 406)
@@ -25,4 +26,4 @@ saveit = (req, resp) ->
     resp.attachment(req.params.filename)
     resp.send(content)
 
-app.listen process.env.VMC_APP_PORT or 3000, -> console.log 'Listening...'
+app.listen process.env.VMC_APP_PORT or 4000, -> console.log 'Listening...'

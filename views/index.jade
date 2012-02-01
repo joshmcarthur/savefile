@@ -1,8 +1,20 @@
-.container
-  .four.columns
-    div.impress-not-supported#impress
-      div.step.slide#one-more-thing(data-x="6000", data-y="4000", data-scale="2")
-        p one more thing...
-      div.step#title(data-x="1000", data-y="500", data-z="-100", data-rotate-x="-30", data-rotate-y="-10", data-scale="7")
-        h1 savefile.it
-      div.step#overview
+.twelve.columns.offset-by-two
+  .tucked-corners.top-corners
+      span.tucked-corners.bottom-corners
+        p.package
+          &nbsp;
+        h1#title savefile.it
+
+        #url
+          span.getpost GET/POST
+          span.cruft http://
+          span.domain savefile.it
+          span.cruft /
+          span.filename :filename
+          span.cruft .
+          span.extension :extension
+          span.cruft ?
+          span.contents_param contents
+          span.cruft =
+          span.contents :contents
+
