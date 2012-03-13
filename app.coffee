@@ -25,4 +25,4 @@ saveit = (req, resp) ->
     resp.attachment(req.params.filename)
     resp.send(content)
 
-app.listen process.env.VMC_APP_PORT or 4000, -> console.log 'Listening...'
+app.listen process.env.PORT or 4000, -> console.log 'Listening...'
