@@ -19,7 +19,7 @@ app.post '/:filename.:extension', (req, resp)->
   saveit(req, resp)
 
 saveit = (req, resp) ->
-  content = req.param['content']
+  content = req.query['content']
   unless (content)
     resp.json({error: 'File content is missing'}, 406)
   else
