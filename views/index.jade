@@ -69,13 +69,13 @@
       .row
         .span10
           h5 Downloading a simple string
-          pre
+          pre.prettyprint.linenums
             | var file = "<h1>Mmm, bacon</h1>";
             | window.location="http://savefile.joshmcarthur.com/bacon.html?contents=" + encodeURIComponent(file)
       .row
         .span10
           h5 Downloading the contents of a text area with a POST request
-          pre
+          pre.prettyprint.linenums
             | var textarea = $('textarea');
             | var form_action = "http://savefile.joshmcarthur.com/textarea.html";
             | $('<form></form>', { action: form_action, method: 'POST'}).append(
@@ -86,7 +86,7 @@
         .span10
           h5 Downloading the contents of a&nbsp;
             a(href="http://ckeditor.com") CKEditor
-          pre
+          pre.prettyprint.linenums
             | // Assuming you have a CKEditor on a textarea called 'bacon'
             | var file_contents = CKEDITOR.instances.bacon.getData();
             | var form_action = "http://savefile.joshmcarthur.com/ckeditor.html";
