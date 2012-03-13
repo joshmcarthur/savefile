@@ -4,6 +4,7 @@ assets = require 'connect-assets'
 
 app = express.createServer()
 app.use assets()
+app.use express.bodyParser()
 app.set 'view engine', 'jade'
 
 app.get '/', (req, resp) -> resp.render 'index'
@@ -23,7 +24,7 @@ saveit = (req, resp) ->
   unless (content)
     resp.json({error: 'File content is missing'}, 406)
   else
-    resp.attachment(req.param('filename'))
+    resp.attachment("#{req.param('filename', 'file')}.#{req.param('extension', 'txt')}")
     resp.send(content)
 
 app.listen process.env.PORT or 4000, -> console.log 'Listening...'
