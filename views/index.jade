@@ -1,20 +1,111 @@
-.twelve.columns.offset-by-two
-  .tucked-corners.top-corners
-      span.tucked-corners.bottom-corners
-        p.package
-          &nbsp;
-        h1#title savefile.it
+.hero-unit
+  h1 savefile
+  p savefile is a simple service for making a file with any name and extension out of a string of text. It can be used with anything that can make an HTTP request.
+  p
+    ul#url.breadcrumb
+      li
+        .getpost.label.label-info GET/POST
+      li
+        span.divider http://
+      li
+        span.domain savefile.joshmcarthur.com
+      li
+        span.divider /
+      li
+        a.filename(href="#filename") :filename
+      li
+        span.divider .
+      li
+        a.extension(href="#extension") :extension
+      li
+        span.divider ?
+      li
+        span.param contents
+      li
+        span.divider =
+      li
+        a.contents(href="#contents") :contents
 
-        #url
-          span.getpost GET/POST
-          span.cruft http://
-          span.domain savefile.it
-          span.cruft /
-          span.filename :filename
-          span.cruft .
-          span.extension :extension
-          span.cruft ?
-          span.contents_param contents
-          span.cruft =
-          span.contents :contents
+.row
+  .span12
+    .well#filename
+      h3 Filename
+      p
+      |  The file name that you would like to be returned to the user as the name of the file
+.row
+  .span12
+    .well#extension
+      h3 Extension
+      p
+      |  The type of file the user is downloading. This should match what is actually in the file, to
+      |  ensure that when downloaded, the web browser launches the correct program to open the file.
+
+.row
+  .span12
+    .well#contents
+      h3 Contents
+      p
+      | The actual contents of the file. There are two ways of entering this information:
+      dl
+        dt In the URL (GET)
+        dd
+        |  If the contents of the file are short (less than 1024 characters is safest), then
+        |  you can just put the contents of the file in the URL, and they will be inserted into the file
+        |  for download
+
+        dt In the body (POST)
+        dd
+        |  If you are building a long file, just want to be safe, or you don't want
+        |  the contents of the file showing up in the URL, then you can send a POST request
+        |  to the above URL, and instead of specifying the content, send it as a POST parameter.
+      p
+        |  Confused about how to do this?
+        a(href="#samples") Check out the code samples.
+
+.row
+  .span12
+    .well#samples
+      h3 Samples
+      .row
+        .span10
+          h5 Downloading a simple string
+          pre
+            | var file = "<h1>Mmm, bacon</h1>";
+            | window.location="http://savefile.joshmcarthur.com/bacon.html?contents=" + encodeURIComponent(file)
+      .row
+        .span10
+          h5 Downloading the contents of a text area with a POST request
+          pre
+            | var textarea = $('textarea');
+            | var form_action = "http://savefile.joshmcarthur.com/textarea.html";
+            | $('<form></form>', { action: form_action, method: 'POST'}).append(
+            |   $('<input></input', { name: 'contents', type: 'hidden', value: textarea.val() })
+            | ).submit();
+
+      .row
+        .span10
+          h5 Downloading the contents of a&nbsp;
+            a(href="http://ckeditor.com") CKEditor
+          pre
+            | // Assuming you have a CKEditor on a textarea called 'bacon'
+            | var file_contents = CKEDITOR.instances.bacon.getData();
+            | var form_action = "http://savefile.joshmcarthur.com/ckeditor.html";
+            | $('<form></form>', { action: form_action, method: 'POST'}).append(
+            |   $('<input></input', { name: 'contents', type: 'hidden', value: file_contents })
+            | ).submit();
+
+footer#credits
+  hr
+  .row
+    .span1
+      .thumbnail
+        img(src="http://www.gravatar.com/avatar/121e5a3ec8de41231cc31511ca761856.png")
+    .span11
+      | Created by
+      a(href="http://twitter.com/sudojosh") @sudojosh
+      | &nbsp;2012
+
+
+
+
 
