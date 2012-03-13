@@ -15,7 +15,8 @@ app.get '/:filename.:extension', (req, resp) ->
   else
     saveit(req, resp)
 
-app.post '/:filename.:extension', saveit
+app.post '/:filename.:extension', (req, resp)->
+  saveit(req, resp)
 
 saveit = (req, resp) ->
   content = req.param.content
