@@ -19,11 +19,11 @@ app.post '/:filename.:extension', (req, resp)->
   saveit(req, resp)
 
 saveit = (req, resp) ->
-  content = req.query['content']
+  content = req.param('content')
   unless (content)
     resp.json({error: 'File content is missing'}, 406)
   else
-    resp.attachment(req.param['filename'])
+    resp.attachment(req.param('filename'))
     resp.send(content)
 
 app.listen process.env.PORT or 4000, -> console.log 'Listening...'
