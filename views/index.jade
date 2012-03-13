@@ -24,7 +24,7 @@
       li
         span.divider =
       li
-        a.contents(href="#contents") :contents
+        a.contents(href="#content") :content
 
 .row
   .span12
@@ -42,15 +42,15 @@
 
 .row
   .span12
-    .well#contents
-      h3 Contents
+    .well#content
+      h3 Content
       p
-      | The actual contents of the file. There are two ways of entering this information:
+      | The actual content of the file. There are two ways of entering this information:
       dl
         dt In the URL (GET)
         dd
-        |  If the contents of the file are short (less than 1024 characters is safest), then
-        |  you can just put the contents of the file in the URL, and they will be inserted into the file
+        |  If the content of the file are short (less than 1024 characters is safest), then
+        |  you can just put the content of the file in the URL, and they will be inserted into the file
         |  for download
 
         dt In the body (POST)
@@ -71,7 +71,7 @@
           h5 Downloading a simple string
           pre.prettyprint.linenums
             | var file = "<h1>Mmm, bacon</h1>";
-            | window.location="http://savefile.joshmcarthur.com/bacon.html?contents=" + encodeURIComponent(file)
+            | window.location="http://savefile.joshmcarthur.com/bacon.html?content=" + encodeURIComponent(file)
       .row
         .span10
           h5 Downloading the contents of a text area with a POST request
@@ -79,7 +79,7 @@
             | var textarea = $('textarea');
             | var form_action = "http://savefile.joshmcarthur.com/textarea.html";
             | $('<form></form>', { action: form_action, method: 'POST'}).append(
-            |   $('<input></input', { name: 'contents', type: 'hidden', value: textarea.val() })
+            |   $('<input></input', { name: 'content', type: 'hidden', value: textarea.val() })
             | ).submit();
 
       .row
@@ -91,7 +91,7 @@
             | var file_contents = CKEDITOR.instances.bacon.getData();
             | var form_action = "http://savefile.joshmcarthur.com/ckeditor.html";
             | $('<form></form>', { action: form_action, method: 'POST'}).append(
-            |   $('<input></input', { name: 'contents', type: 'hidden', value: file_contents })
+            |   $('<input></input', { name: 'content', type: 'hidden', value: file_contents })
             | ).submit();
 
 footer#credits
