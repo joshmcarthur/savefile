@@ -1,7 +1,8 @@
 savefile
 ===========
 
-[GET/POST] http://savefile.joshmcarthur.com/:filename?content=:contents of file
+### http://savefile.joshmcarthur.com
+
 
 Example of Use
 ----------
