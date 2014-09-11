@@ -1,7 +1,7 @@
 savefile
 ===========
 
-### http://savefile.joshmcarthur.com
+### https://savefile.herokuapp.com
 
 
 Example of Use
@@ -10,14 +10,14 @@ Example of Use
 ``` JavaScript
   var file_contents = "<h1>Hello, World!</h1>";
   var filename = "file.txt";
-  window.open("http://savefile.joshmcarthur.com/" + filename + "?content=" +
+  window.open("https://savefile.herokuapp.com/" + filename + "?content=" +
 file_contents);
 ```
 
 i.e.:
 
 ```
-  http://savefile.joshmcarthur.com/[The file name you want to use]?content=[The
+  https://savefile.herokuapp.com/[The file name you want to use]?content=[The
 content of your file]
 ```
 
